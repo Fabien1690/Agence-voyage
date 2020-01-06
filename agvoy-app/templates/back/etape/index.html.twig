@@ -1,0 +1,77 @@
+{% extends 'back/base_back_etape.html.twig' %}
+
+{% block title %}Index des étapes{% endblock %}
+
+{% block body %}
+<style>
+
+#etapes {
+	background-color: #e8e0f0;
+	margin-left: 50px;
+	width: 95%;
+}
+
+#etapes th {
+	background-color: #d0c0ff;
+	padding: 20px;
+	border: 2px solid black;
+}
+
+#etapes td {
+	border: 1px solid black;
+	}
+
+#etapes tr:nth-child(even){background-color: #e6f7ff;}
+
+a{
+margin-left: 5px;
+}
+
+#nouveau {
+	border: 1px;
+	color: blue;
+	border-style: solid;
+	margin-top: 10px;
+	margin-left: 50px;
+	border-color: #555555;
+	background-color: #ffffff;
+	border-radius: 5px;
+	padding: 4px;
+}
+
+</style>
+
+    <h1>Etape index</h1>
+
+    <table class="table" id="etapes">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumeroEtape</th>
+                <th>VilleEtape</th>
+                <th>NombreJours</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etape in etapes %}
+            <tr>
+                <td>{{ etape.id }}</td>
+                <td>{{ etape.numeroEtape }}</td>
+                <td>{{ etape.villeEtape }}</td>
+                <td>{{ etape.nombreJours }}</td>
+                <td>
+                    <a href="{{ path('admin_etape_show', {'id': etape.id}) }}">Afficher</a>
+                    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_etape_new') }}" id="nouveau">Créer une nouvelle étape</a>
+{% endblock %}

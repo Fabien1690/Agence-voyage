@@ -1,0 +1,18 @@
+{# templates/home.html.twig #}
+
+{# Template de la page d'accueil de l'application #}
+
+{% extends "base.html.twig" %}
+
+{% block title %}{{ parent() }} - Welcome{% endblock %}
+
+{% block main %}
+
+
+<h1>Welcome</h1>
+
+<p>{{ welcome }}</p>
+<a href="{{ path('frontoffice_home') }}">Voir tous les circuits</a>
+
+{% endblock %} {# main #}
+

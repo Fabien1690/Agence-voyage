@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+<style>
+
+#circuits th{
+	background-color: #87CEFA;
+	color: #f2f2f2;
+	font-weight: 900;
+	padding: 20px;
+	border: 2px solid black;
+	text-shadow: 1px 1px #505050;
+	letter-spacing: 1px;
+}
+
+#circuits {
+	background-color: #e8e0e0;
+	margin-left: 50px;
+	width: 95%;
+}
+
+#circuits td {
+	border: 1px solid black;
+	}
+
+#circuits tr:nth-child(even){background-color: #e8f0f3;}
+
+</style>
+
+
+
+    <h1>Liste des circuits</h1>
+
+    <table class="table" id='circuits'>
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Description</th>
+        		<th>PaysDepart</th>
+        		<th>VilleDepart</th>
+        		<th>VilleArrivee</th>
+        		<th>DureeCircuit</th>
+        		<th>Etapes</th>
+        		<th>ProgCircuit</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+
+
+{% for circuit in circuits %}
+
+{% if circuit.programmationCircuits is not null %}
+
+<tr>
+	<td>{{ circuit.id }}</td>
+	<td>{{ circuit.description }}</td>
+	<td>{{ circuit.paysDepart }}</td>
+	<td>{{ circuit.villeDepart }}</td>
+	<td>{{ circuit.villeArrivee }}</td>
+	<td>{{ circuit.dureeCircuit }}</td>
+	<td><a href="{{ path('front_circuit_show', {id: circuit.id}) }}">détails</a></td>
+</tr>
+
+{% endif %}
+
+
+{% else %}
+<tr>
+<td colspan="2">Aucun circuit trouvé</td>
+</tr>
+{% endfor %}
+
+
+{# <a href="{{ path('front_circuit_prog',)}}">Circuits programmés</a>#}
+{# <a href="http://localhost:8000/prog">Circuits programmés</a>#}
+
+
+	</tbody>
+    </table>
+<br>
+<a href="{{ path('circuitsprogrammes')}}">Voir les circuits programmés</a>
+
+
+{% endblock %} {# body #}
+
+

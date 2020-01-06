@@ -1,0 +1,91 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<style>
+
+#prog th{
+	background-color: #82CaF5;
+	color: #f2f2f2;
+	font-weight: 900;
+	padding: 20px;
+	border: 2px solid black;
+	text-shadow: 1px 1px #505050;
+	letter-spacing: 1px;
+}
+
+#prog {
+	background-color: #e8e0e0;
+	margin-left: 50px;
+	width: 95%;
+}
+
+#prog td {
+	border: 1px solid black;
+	height: 50px;
+	}
+
+
+</style>
+
+
+<h1>Liste des circuits programmés</h1>
+<table id='prog'>
+	<thead>
+		<tr>
+
+			<th>Id</th>
+			<th>Description</th>
+			<th>PaysDepart</th>
+			<th>VilleDepart</th>
+			<th>VilleArrivee</th>
+			<th>DureeCircuit</th>
+			<th>Etapes</th>
+			<th>Favoris</th>
+
+		</tr>
+	</thead>
+
+	<tbody>
+{# 	{% if app.user %}#}
+{# 		{% if is_granted('ROLE_ADMIN') %}#}
+{# 		{% for circuit in circuits %}#}
+{#     		<tr>#}
+{#     			<td>{{ circuit.id }}</td>#}
+{#     			<td>{{ circuit.description }}</td>#}
+{#     			<td>{{ circuit.paysDepart }}</td>#}
+{#     			<td>{{ circuit.villeDepart }}</td>#}
+{#     			<td>{{ circuit.villeArrivee }}</td>#}
+{#     			<td>{{ circuit.dureeCircuit }}</td>#}
+{#     			<td><a href="{{ path('front_circuit_show', {id: circuit.id}) }}">détails</a></td>#}
+{#     	{% endfor %}#}
+{#     	{% endif %}#}
+{#     		</tr>#}
+{# 		{% else %}#}
+    		{% for circuit in progs %}
+    		<tr>
+    			<td>{{ circuit.id }}</td>
+    			<td>{{ circuit.description }}</td>
+    			<td>{{ circuit.paysDepart }}</td>
+    			<td>{{ circuit.villeDepart }}</td>
+    			<td>{{ circuit.villeArrivee }}</td>
+    			<td>{{ circuit.dureeCircuit }}</td>
+    			<td><a href="{{ path('front_circuit_show', {id: circuit.id}) }}">détails</a></td>
+    			
+    		</tr>
+    		{% else %}
+    		<tr>
+    			<td colspan="2">no circuits found</td>
+    			<td></td>
+    		</tr>
+    		{% endfor %}
+{#     {% endif %}#}
+	</tbody>
+</table>
+
+<br> {# Break line == sauter une ligne#}
+<a href="{{ path('frontoffice_home') }}">Retour à l'accueil</a>
+
+{% endblock %}

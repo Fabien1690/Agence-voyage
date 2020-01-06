@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        
+        {% block stylesheets %}
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        
+        
+        {% endblock %}
+        
+    </head>
+    <body>
+    <style>
+   body {
+   background-color: #f0f0f0;
+   }
+    
+    h1 {
+	color: white;
+	text-align: center;
+	margin-top: 20px;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 50px;
+	border-style: solid;
+	border-color: black;
+	background: #404040;
+
+}
+
+    a {
+	border: 1px;
+	color: blue;
+	border-style: solid;
+	margin-top: 10px;
+	margin-left: 50px;
+	border-color: #555555;
+	background-color: #ffffff;
+	border-radius: 5px;
+	padding: 4px;
+}
+
+#head{background-color: black}
+th{color: white;}
+
+
+    </style>
+        {% block body %}
+        
+	{% block menu %}
+	{% endblock %} {# menu #}
+
+    {% block main %}MAIN
+    <h1>ICI</h1>
+    {% endblock %} {# main #}
+
+	    {% endblock %} {# body #}
+
+	{% block footer %}
+	<div >
+	</div>
+	{% endblock %} {# footer #}
+</body>
+	{% block javascripts %}
+	<script src="/js/jquery-3.3.1.js"></script>
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	
+	<script src="/js/bootstrap.min.js"></script>
+	{% endblock %} {# javascripts #}
+	{% block custompage_script %}
+    {% endblock %} {# custompage_scripts #}
+</html>

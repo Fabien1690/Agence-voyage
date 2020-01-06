@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<style>
+
+#circuit th{
+	background-color: #87CEFA;
+	color: #f2f2f2;
+	font-weight: 900;
+	padding: 20px;
+	border: 2px solid black;
+	text-shadow: 1px 1px #505050;
+	letter-spacing: 1px;
+	width: 20%
+}
+
+#circuit {
+	background-color: #e8e0e0;
+	margin-left: 50px;
+	width: 95%;
+}
+
+#circuit td {
+	border: 1px solid black;
+	}
+
+#details{
+width: 40%;
+	background-color: #50b5e0;
+	color: #f2f2f2;
+	/*padding: 20px;*/
+	/*border: 2px solid black;*/
+	letter-spacing: 1px;
+	width: 20%;
+	margin-left: 20px;
+	text-align: center;
+}
+
+#details th{
+	border: 2px solid black;
+	text-shadow: 1px 1px #505050;
+	font-weight: 900;
+}
+
+#details td{
+	border: 1px solid black;
+	background-color: #e8e0e0;
+	color: black;
+}
+
+</style>
+
+
+
+    <h1>Circuit {{circuit.id}}</h1>
+    
+    <p><a href="{{ path('like', {id : circuit.id}) }}">LIKE OR UNLIKE !!!</a></p>
+  
+    
+<table class="table" id='circuit'>
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ circuit.id }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ circuit.description }}</td>
+        </tr>
+	<tr>
+            <th>PaysDepart</th>
+            <td>{{ circuit.paysDepart }}</td>
+        </tr>
+	<tr>
+            <th>VilleDepart</th>
+            <td>{{ circuit.villeDepart }}</td>
+        </tr>
+	<tr>
+            <th>VilleArrivee</th>
+            <td>{{ circuit.villeArrivee }}</td>
+        </tr>
+	<tr>
+            <th>DureeCircuit</th>
+            <td>{{ circuit.dureeCircuit }}</td>
+        </tr>
+	
+<table id='details'>
+	<thead>
+	    <tr>
+		<th>Numéro</th>
+		<th>Ville</th>
+		<th>NombreJour</th>
+	    </tr>
+	</thead>
+
+	  {%  for etape in circuit.etapes %}
+	  <tr>
+		<td>{{ etape.numeroEtape }}</td>
+		<td>{{ etape.villeEtape}}</td>
+		<td>{{ etape.nombreJours }} </td>
+	  </tr>
+	  {% endfor %} {# etapes #}
+</table>
+<br>
+<a href="{{ path('frontoffice_home') }}">retour à l'accueil</a>
+<br>
+<br>
+{{ dump(circuit) }}
+
+</tbody>
+
+</table>
+
+
+{% endblock %} {# body #}
+
+
